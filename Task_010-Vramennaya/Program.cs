@@ -1,32 +1,19 @@
-﻿// Програ принимает 2 точки и находит расстояние между ними
+﻿// Выдает таблицу квадратов от 1 до N
 
-// глобальные переменные
-int x1;
-int y1;
-int x2;
-int y2;
-double s;
+Console.WriteLine("Введите число");
+int num = Convert.ToInt32(Console.ReadLine()); 
+// или int num = int.Parse(Console.ReadLine());
 
-// метод. считывает координаты точек
-void ReadData()
+string lineN = String.Empty;
+string lineN2 = String.Empty; 
+
+for (int count = 1; count <= num; count++)
 {
-    Console.WriteLine("Введите X1");
-    x1 = int.Parse(Console.ReadLine());
-    Console.WriteLine("Введите Y1");
-    y1 = int.Parse(Console.ReadLine());
-    Console.WriteLine("Введите X2");
-    x2 = int.Parse(Console.ReadLine());
-    Console.WriteLine("Введите Y2");
-    y2 = int.Parse(Console.ReadLine());
+    lineN = lineN + $"{count} ";
+    lineN2 = lineN2 + $"{count * count} ";
 }
 
-// метод. Вычмсление расстояние между х и у
-void Answer()
-{
-    s = Math.Sqrt(Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2));
-}
+Console.WriteLine(lineN);
+Console.WriteLine(lineN2);
 
-
-ReadData();
-Answer();
-Console.WriteLine(s);
+ 
