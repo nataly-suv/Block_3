@@ -1,34 +1,38 @@
-﻿// Сортировка выбором
-int[] array = { 1, 5, 7, 9, 1, 8, 7, 6 };
+﻿// Напишите программу, которая принимает на вход координаты точки (X и Y),
+// причём X ≠ 0 и Y ≠ 0 и выдаёт номер четверти плоскости,
+// в которой находится эта точка.
 
-// метод печати массива
-void PrintArray(int[] arr)
+// Метод считывания координаты и возвращает массив с ней (точка x=34; y=-30)
+int[,] ReadPoint()
 {
-    int count = arr.Length;
-    for (int i = 0; i < count; i++)
-    {
-        Console.Write($"{arr[i]} ");
-    }
-    Console.WriteLine();
+    string inputLine = Console.ReadLine();
+
+    string coordXLine = inputLine.Substring(0, inputLine.IndexOf(";")); // взяли подстроку от 0 до ; - x=34
+    coordXLine = coordXLine.Substring(coordXLine.IndexOf("=") + 1); //взяли подстроку от = до окнца - 34
+
+    string coordYLine = inputLine.Substring(inputLine.IndexOf(";") + 1);
+    coordYLine = coordYLine.Substring(coordYLine.IndexOf("=") + 1);
+
+    int coordX = int.Parse(coordXLine);
+    int coordY = int.Parse(coordYLine);
+
+    int[,] arrayOut = new int[1, 2]; // создали двумерный массив arrayOut
+    arrayOut[0, 0] = coordX; // положили в массив координату Х
+    arrayOut[0, 1] = coordY; // положили в массив координату У
+
+    return arrayOut;
 }
-PrintArray(array); // вызвали метод. напечатали массив
 
-Console.WriteLine();
-
-// метод сортировки
-void Sort(int[] arr)
+// метод вывода номера четверти 
+void Answer(int[,] arrayPoint)
 {
-    for (int i = 0; i < arr.Length - 1; i++)
-    {
-        int minPos = i;
-        for (int j = i + 1; j < arr.Length; j++)
-        {
-            if (arr[j] < arr[minPos]) minPos = j;
-        }
-        int temporary = arr[i];
-        arr[i] = arr[minPos];
-        arr[minPos] = temporary;
-    }
+    if (arrayPoint[0, 0] > 0 && arrayPoint[0, 1] > 0)  Console.WriteLine("I четверть");
+    if (arrayPoint[0, 0] < 0 && arrayPoint[0, 1] > 0)  Console.WriteLine("II четверть");
+    if (arrayPoint[0, 0] < 0 && arrayPoint[0, 1] < 0)  Console.WriteLine("III четверть");
+    if (arrayPoint[0, 0] > 0 && arrayPoint[0, 1] < 0)  Console.WriteLine("IV четверть");
 }
-Sort(array);
-PrintArray(array);
+
+int[,] arrayPoint = ReadPoint();
+Answer(arrayPoint);
+
+
