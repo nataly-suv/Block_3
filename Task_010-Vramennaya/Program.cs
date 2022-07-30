@@ -7,8 +7,10 @@ int[,] ReadPoint()
 {
     string inputLine = Console.ReadLine();
 
-    string coordXLine = inputLine.Substring(0, inputLine.IndexOf(";")); // взяли подстроку от 0 до ; - x=34
-    coordXLine = coordXLine.Substring(coordXLine.IndexOf("=") + 1); //взяли подстроку от = до окнца - 34
+    string coordXLine = inputLine.Substring(0, inputLine.IndexOf(";"));
+    // взяли подстроку от 0 до ; - x=34
+    coordXLine = coordXLine.Substring(coordXLine.IndexOf("=") + 1);
+    //взяли подстроку от = до окнца - 34
 
     string coordYLine = inputLine.Substring(inputLine.IndexOf(";") + 1);
     coordYLine = coordYLine.Substring(coordYLine.IndexOf("=") + 1);
@@ -26,10 +28,14 @@ int[,] ReadPoint()
 // метод вывода номера четверти 
 void Answer(int[,] arrayPoint)
 {
-    if (arrayPoint[0, 0] > 0 && arrayPoint[0, 1] > 0)  Console.WriteLine("I четверть");
-    if (arrayPoint[0, 0] < 0 && arrayPoint[0, 1] > 0)  Console.WriteLine("II четверть");
-    if (arrayPoint[0, 0] < 0 && arrayPoint[0, 1] < 0)  Console.WriteLine("III четверть");
-    if (arrayPoint[0, 0] > 0 && arrayPoint[0, 1] < 0)  Console.WriteLine("IV четверть");
+    if (arrayPoint[0, 0] > 0 && arrayPoint[0, 1] > 0)
+        Console.WriteLine("I четверть");
+    if (arrayPoint[0, 0] < 0 && arrayPoint[0, 1] > 0)
+        Console.WriteLine("II четверть");
+    if (arrayPoint[0, 0] < 0 && arrayPoint[0, 1] < 0)
+        Console.WriteLine("III четверть");
+    if (arrayPoint[0, 0] > 0 && arrayPoint[0, 1] < 0)
+        Console.WriteLine("IV четверть");
 }
 
 int[,] arrayPoint = ReadPoint();
