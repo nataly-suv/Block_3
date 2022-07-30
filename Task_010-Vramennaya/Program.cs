@@ -1,9 +1,29 @@
-﻿// Цикл в цикле. вывод таблицы умножения на экран
-for (int i=2; i<=10; i++)
+﻿// Пробела заменить |, букву к на К
+
+string text = "– Я думаю, – сказал князь, улыбаясь, – что,"
+            + "ежели бы вас послали вместо нашего милого Винценгероде,"
+            + "вы бы взяли приступом согласие прусского короля."
+            + "Вы так красноречивы. Вы дадите мне  чаю?";
+
+// есть строка string s = "abcd"
+//             индексы     0123
+// к элементу строки можно обратиться s[2]  - это буква с
+
+// метод по замене одного символа другим
+string Replace(string text, char oldValue, char newValue)
 {
-    for (int j=1; j<=10; j++)
+    string result = String.Empty; //задаем пустую строку
+    int length = text.Length;
+    for (int i = 0; i < length; i++)
     {
-        Console.WriteLine($"{i} x {j} = {i*j}");
+        if (text[i] == oldValue) result = result + $"{newValue}";
+        else result = result + $"{text[i]}";
     }
-    Console.WriteLine();
+    return result;
 }
+string newText = Replace(text, ' ', '|');
+Console.WriteLine (newText);
+Console.WriteLine ();
+
+string newText2 = Replace (newText, 'к', 'К');
+Console.WriteLine (newText2);
