@@ -1,32 +1,25 @@
-﻿// Выдает таблицу квадратов от 1 до N
+﻿// Проверка, яв-ся ли число 5-ти занчным палиндромом 
+//-------------------------------------------------
 
-
-List<int> listGen(int number)
+// метод. поиск разряда числа 
+int PoiskRazryad(int x)
 {
-    List<int> numbers = new List<int>();
-    for (int i = 1; i <= number; i++)
-    {
-        numbers.Add(i);
-    }
-    return numbers;
+    int y = (int)Math.Log10(Math.Abs(x)) + 1;
+    return y;
 }
 
-Console.WriteLine("Введите число");
-string? inputLine = Console.ReadLine();
+Console.WriteLine("введите число");
+int num = Convert.ToInt32(Console.ReadLine());
 
-if (inputLine != null)
+int razryad = PoiskRazryad(num);  // нашла разряд введенного числа 
+Console.WriteLine($"Разряд введенного числа {razryad}");
+
+if (razryad == 5)
 {
-    int inputNumber = int.Parse(inputLine);
-    List<int> nums = listGen(inputNumber);
-    foreach (var i in nums)
+    if ((num/10000) == (num%10) && (num/1000%10) == (num/10%10))
     {
-        Console.Write(i);
-        Console.Write(" ");
+        Console.WriteLine ($"Введенное число {num} является полиндромом");
     }
-    Console.WriteLine();
-    foreach (var i in nums)
-    {
-        Console.Write(Math.Pow(i, 2));
-        Console.Write(" ");
-    }
+    else Console.WriteLine ($"Введенное число {num} не является полиндромом");
 }
+else Console.WriteLine ("Вы ввели не 5-ти значное число. Перезапустите прграмму");
