@@ -1,16 +1,32 @@
-﻿// Прграмма, по номеру четверти выдает диапозон координат 
-void answer(int x)
+﻿// Програ принимает 2 точки и находит расстояние между ними
+
+// глобальные переменные
+int x1;
+int y1;
+int x2;
+int y2;
+double s;
+
+// метод. считывает координаты точек
+void ReadData()
 {
-    if (x == 1) Console.WriteLine("x > 0, y > 0");
-    if (x == 2) Console.WriteLine("x < 0, y > 0");
-    if (x == 3) Console.WriteLine("x < 0, y < 0");
-    if (x == 4) Console.WriteLine("x > 0, y < 0");
+    Console.WriteLine("Введите X1");
+    x1 = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите Y1");
+    y1 = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите X2");
+    x2 = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите Y2");
+    y2 = int.Parse(Console.ReadLine());
 }
 
-Console.WriteLine("Введите номер четверти");
-string? inNum = Console.ReadLine();
-if (inNum != null)
+// метод. Вычмсление расстояние между х и у
+void Answer()
 {
-    int num = int.Parse(inNum);
-    answer(num);
+    s = Math.Sqrt(Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2));
 }
+
+
+ReadData();
+Answer();
+Console.WriteLine(s);
