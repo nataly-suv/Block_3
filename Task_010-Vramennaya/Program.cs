@@ -1,29 +1,34 @@
-﻿// Пробела заменить |, букву к на К
+﻿// Сортировка выбором
+int[] array = { 1, 5, 7, 9, 1, 8, 7, 6 };
 
-string text = "– Я думаю, – сказал князь, улыбаясь, – что,"
-            + "ежели бы вас послали вместо нашего милого Винценгероде,"
-            + "вы бы взяли приступом согласие прусского короля."
-            + "Вы так красноречивы. Вы дадите мне  чаю?";
-
-// есть строка string s = "abcd"
-//             индексы     0123
-// к элементу строки можно обратиться s[2]  - это буква с
-
-// метод по замене одного символа другим
-string Replace(string text, char oldValue, char newValue)
+// метод печати массива
+void PrintArray(int[] arr)
 {
-    string result = String.Empty; //задаем пустую строку
-    int length = text.Length;
-    for (int i = 0; i < length; i++)
+    int count = arr.Length;
+    for (int i = 0; i < count; i++)
     {
-        if (text[i] == oldValue) result = result + $"{newValue}";
-        else result = result + $"{text[i]}";
+        Console.Write($"{arr[i]} ");
     }
-    return result;
+    Console.WriteLine();
 }
-string newText = Replace(text, ' ', '|');
-Console.WriteLine (newText);
-Console.WriteLine ();
+PrintArray(array); // вызвали метод. напечатали массив
 
-string newText2 = Replace (newText, 'к', 'К');
-Console.WriteLine (newText2);
+Console.WriteLine();
+
+// метод сортировки
+void Sort(int[] arr)
+{
+    for (int i = 0; i < arr.Length - 1; i++)
+    {
+        int minPos = i;
+        for (int j = i + 1; j < arr.Length; j++)
+        {
+            if (arr[j] < arr[minPos]) minPos = j;
+        }
+        int temporary = arr[i];
+        arr[i] = arr[minPos];
+        arr[minPos] = temporary;
+    }
+}
+Sort(array);
+PrintArray(array);
